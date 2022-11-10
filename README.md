@@ -1,15 +1,15 @@
 # Coin-Simulator
-simulate the coin toss process
+Simulate the coin toss process.
 
 
-Introduction
+## Introduction
 
 In this assignment you will write a graphics-based program to simulate someone tossing a pair of coins some number of times, and display the results. So for example the user may request 10 trials. For each trial two coins are tossed. The program reports in bar graph form how many times the result was two heads, how many times it was two tails, and how many times it was one of each.
 
 This assignment will give you practice with creating and implementing classes, using loops, using the java library for random number generation, doing console-based IO, and drawing to a graphics window. Also you'll get practice in general program development.
 
 
-Resources
+## Resources
 
 Horstmann, Section 2.9, 2.10, 3.8, How-to 3.2 Programs that draw stuff
 Horstmann, Chapter 3, Implementing Classes
@@ -39,7 +39,7 @@ Here is a screen-shot of output from one run of our solution to this assignment,
 
  
 
-Remember, your output will not be identical to this because of the random nature of the results.
+- Remember, your output will not be identical to this because of the random nature of the results.
 
 Note the placement of each of the bars evenly across the window. In addition, the height of each bar is given so that 100% would fill up most of the height of the window (but not run into the top of it). Thus the 48% of trials that resulted in a head and a tail in the example above fills up roughly half of the height of the window.
 
@@ -47,13 +47,13 @@ Also, your bar graph should get resized appropriately if the window gets resized
 
  
 
-Note that resizing the window does not change the results of the simulation.
+- Note that resizing the window does not change the results of the simulation.
 
 Here's an example illustrating what the display looks like when all of the trials have the same result, forced here by only doing one trial (screen-shot shows the window after it was resized smaller):
 
  
 
-More about the graphics library methods necessary to get these results in the section on Graphics programming.
+## More about the graphics library methods necessary to get these results in the section on Graphics programming.
 
 There are a few other requirements for the assignment discussed in the following sections. To summarize here, the other requirements are:
 
@@ -62,7 +62,7 @@ you must create a working test program for your CoinTossSimulator class, describ
 you must edit and submit README file discussed in the section about that. Do not wait until you are about to submit the program to answer the README questions, because they involve further tests of your program, and you may discover a bug during that testing.
 your program will also be evaluated on style and documentation. More about this in the section on grading criteria.
 
-More details of the error-checking
+## More details of the error-checking
 
 As mentioned in the previous section, when your program prompts for the number of trials, you will error check that a positive value is entered. More specifically, we mean that on an invalid number of trials the program will print out a informative error message and then prompt and read again until the user enters a valid value. Example (user input shown in italics):
 Enter number of trials: -5
@@ -72,7 +72,7 @@ ERROR: Number entered must be greater than 0.
 Enter number of trials: 100
 Your program does not have to handle non-numeric input. (We will not test it on that case.)
 
-Class design
+## Class design
 
 To help you make your program object-oriented, we are giving you the general class design for this program. This follows the conventions of graphical classes used in the textbook (see Resources, near the beginning of this document, for relevant textbook readings). In particular, this general design follows the one in Section 3.8 of the textbook that has a viewer, a component, and a graphical object that can get instantiated multiple times and drawn in different locations on the screen (in that one the object class is a Car, here it's the Bar). You are required to use the following classes (ones in bold are ones you will be creating yourself or implementing):
 CoinSimViewer. Contains the main method. Prompts for the number of trials, and creates the JFrame containing the CoinSimComponent. Besides CoinSimComponent, this class does not depend on any of the other classes mentioned here (e.g., if one of those other classes changed, CoinSimViewer would not have to change.) The later section on communicating information between objects will be useful when developing this and the next class listed.
@@ -87,7 +87,7 @@ CoinTossSimulatorTester. A program to test your CoinTossSimulator class independ
 java.util.Random. The java random number generator. See section 6.9 of the textbook for examples of its use. One thing to note about Random: it's a class that through a sequence of method calls generates a sequence of values that depend on the internal state of the object (in this way it is similar to Scanner). Students often want to create a new Random object every time they want a new random number. Don't do that. Instead, normally you create one Random object in your program, and then whenever you want a new random number you make another call to nextInt on that same object. (If you create a Random object every time you are not generating a pseudo-random sequence, although it will appear that you are.)
 Note: this list doesn't include all the java library classes that will be used in the program; for example CoinSimComponent will need java.awt.Graphics.
 
-Incremental development
+## Incremental development
 
 Any program of non-trivial size will be developed faster, with fewer bugs, using the technique of incremental development, which means developing, and testing, pieces of the program incrementally. The incremental aspect is that your program may gradually grow until it includes the complete functionality. (Other people use different names for the same thing. Sometimes it's called building subsets.)
 
@@ -102,7 +102,7 @@ For this assignment, the final product will not be a very large program, but we 
 Similarly, you could test your Bar class, apart from its use in this particular bar graph by creating several bars with hard-coded data or data from the keyboard using a Scanner. We won't require you to submit such a BarTester program for this assignment, however.
 
 
-Testing the CoinTossSimulator class
+## Testing the CoinTossSimulator class
 
 You are actually going to submit two programs for this assignment, both of which use your CoinTossSimulator class. One is CoinTossViewer, described earlier, that has a graphical display. The other is a console-based program, CoinTossSimulatorTester, expressly written to thoroughly test your CoinTossSimulator class, without including the drawing functionality of the CoinTossViewer program. The rationale for unit tests was discussed in the previous section.
 We will use a different compile command to compile each of these programs. We can compile and run the test program with the following commands:
@@ -187,13 +187,13 @@ To make sure all the necessary information appears on the window and in the righ
    int widthOfLabel = labelBounds.getWidth();
    int heightOfLabel = labelBounds.getHeight();
 
-How to communicate information between objects
+## How to communicate information between objects
 
 There are several techniques to communicate information between classes and methods of classes, including via parameters and return values of methods. In particular, here we have the issue of receiving some information in main in CoinSimViewer, that is, the number of trials, but needing to use that information in the component. To do this, your CoinSimComponent class will need to have its own constructor (Note: this is different than the component examples in the book). From main you can pass the information to that constructor, and then, if you also need access to it in other methods, you would save it in an instance variable.
 Recall that you never will be calling paintComponent yourself, nor are you allowed to change the parameters to it.
 
 
-README file
+## README file
 
 For this and all other programs you will be required to submit a text file called README with your assignment. In it you will initial the certification we mentioned earlier. This is also the place to document known bugs in your program. That means you should describe thoroughly any test cases that fail for the the program you are submitting. (Not your bug history -- just info about the version you are submitting.) You should also document here what subset your solution implements if you weren't able to complete the whole program (more about that in the next section). You can also use the README to give the grader any other special information, such as if there is some special way to compile or run your program (this would be unusual for students who complete the assignment).
 For this program, also put the answers to the following questions in the README:
@@ -214,7 +214,7 @@ good/consistent indenting. Use the conventions from the textbook or lecture.
 For this program only, you do not have to worry too much about method length (guideline #7), and while you should document any instance variables that are not obvious from their names, you do not have to worry about representation invariants (item #15).
 Implementing the required class design and answering the README questions will also be part of your style/documentation score.
 
-How to turn in your assignment
+## How to turn in your assignment
 
 Make sure your name, loginid, course, and assignment are at the top of each file you submit (for source files, they would be inside of comments), for any assignment you submit for this course. You will lose a point on the assignment if this information is missing.
 No matter where/how you developed the code, we will be grading it on aludra using the java compiler and virtual machine there.
